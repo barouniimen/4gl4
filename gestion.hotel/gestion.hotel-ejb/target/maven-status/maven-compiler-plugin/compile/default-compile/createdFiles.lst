@@ -1,0 +1,13 @@
+persistance\Manager.class
+persistance\Reservation.class
+persistance\Agence.class
+persistance\Chambre.class
+persistance\NombreEtoiles.class
+persistance\Hotel.class
+persistance\ReservationPk.class
+services\IAdminHotelRemote.class
+persistance\ChambreDouble.class
+persistance\ChambreSimple.class
+persistance\Adress.class
+persistance\Client.class
+services\AdminHotel.class
