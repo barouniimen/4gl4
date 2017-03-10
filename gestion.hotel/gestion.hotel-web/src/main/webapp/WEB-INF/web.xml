@@ -6,8 +6,12 @@
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.4gl4</url-pattern>
     <url-pattern>*.jsf</url-pattern>
+    <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
+  
 </web-app>

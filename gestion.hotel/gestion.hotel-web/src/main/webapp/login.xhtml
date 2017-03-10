@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	LOG IN
+	<h:form>
+		<h:commandLink action="welcome" value="Welcome" />
+
+		<h:outputLabel value="login" />
+		<h:inputText value="#{authenticiationBean.login}" />
+		<h:outputLabel value="password" />
+		<h:inputSecret value="#{authenticiationBean.password}" />
+		<h:commandButton action="#{authenticiationBean.login()}"
+			value="LOG IN" />
+		<!-- action prend toujours un String -->
+
+	</h:form>
+</body>
+</html>
