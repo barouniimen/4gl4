@@ -24,7 +24,7 @@ public class AuthenticiationBean {
 			if (personne instanceof Client) {
 				return "client/home?faces-redirect=true";
 			} else if (personne instanceof Manager) {
-				return "manager/home?faces-redirect=true";
+				return "manager/createAgency?faces-redirect=true";
 			} else
 				return "login";
 		} else
