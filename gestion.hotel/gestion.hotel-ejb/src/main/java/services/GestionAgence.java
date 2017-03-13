@@ -14,9 +14,10 @@ public class GestionAgence implements IGestionAgenceLocal {
 	EntityManager em;
 	
 	@Override
-	public void ajouterAgence(Agence agence) {
+	public Agence ajouterAgence(Agence agence) {
 		// TODO Auto-generated method stub
 		em.persist(agence);
+		return agence;
 	}
 
 	@Override

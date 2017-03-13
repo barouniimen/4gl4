@@ -8,4 +8,6 @@ import persistance.Personne;
 public interface IGestionUsers {
 
 	Personne authentifier(String login, String pwd);
+
+	boolean managerHasAgency(String cinManager);
 }

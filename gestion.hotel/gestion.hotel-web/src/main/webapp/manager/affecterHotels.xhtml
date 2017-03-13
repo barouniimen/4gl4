@@ -1,9 +1,74 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml">
-                	
-			<ui:define name="identity"></ui:define>		
-			<ui:define name="content">Affecter Hotels</ui:define>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+
+	<ui:define name="identity">
+			welcome #{authenticiationBean.personne.nom}  #{authenticiationBean.personne.prenom}
+			</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:dataTable border="2" value="#{manageHotels.hotels}" var="hotel">
+				<f:facet name="header">Affecter Hotels</f:facet>
+				<h:column>
+					<f:facet name="header">
+			id
+			</f:facet>
+					<h:outputText value="#{hotel.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+			nom
+			</f:facet>
+					<h:outputText value="#{hotel.nom}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+			Etoiles
+			</f:facet>
+					<h:outputText value="#{hotel.etoiles}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+			Action
+			</f:facet>
+					<h:commandButton action="#{manageHotels.supprimerHotel()}"
+						value="Supprimer">
+						<f:setPropertyActionListener value="#{hotel}"
+							target="#{manageHotels.hotel}"></f:setPropertyActionListener>
+					</h:commandButton>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+			Action
+			</f:facet>
+
+					<h:commandButton   value="Modifier">
+						<f:setPropertyActionListener value="#{hotel}"
+							target="#{manageHotels.hotel}" />
+						<f:setPropertyActionListener value="true"
+							target="#{manageHotels.renderUpdateForm}" />
+					</h:commandButton>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+
+		<br />
+		<h:form rendered="#{manageHotels.renderUpdateForm}">
+			<h:panelGrid columns="2">
+		id:
+		<h:outputText value="#{manageHotels.hotel.id}" />
+		
+		nom:
+		<h:inputText value="#{manageHotels.hotel.nom}" />
+				<h:commandButton action="#{manageHotels.updateHotel()}"
+					value="Submit" />
+			</h:panelGrid>
+		</h:form>
+
+
+	</ui:define>
+
+
 </ui:composition>

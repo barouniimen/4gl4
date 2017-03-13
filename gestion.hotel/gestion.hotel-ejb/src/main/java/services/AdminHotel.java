@@ -12,7 +12,7 @@ import persistance.Hotel;
 import persistance.NombreEtoiles;
 
 @Stateless
-public class AdminHotel implements IAdminHotelRemote {
+public class AdminHotel implements IAdminHotelRemote , IAdminHotelLocal{
 
 	@PersistenceContext
 	EntityManager em;

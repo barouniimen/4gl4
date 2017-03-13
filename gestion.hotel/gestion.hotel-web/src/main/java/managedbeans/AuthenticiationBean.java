@@ -15,15 +15,20 @@ public class AuthenticiationBean {
 
 	private String login;
 	private String password;
+	private Personne personne;
 	@EJB
 	private IGestionUsers gestionUsers;
 
 	public String login() {
-		Personne personne = gestionUsers.authentifier(login, password);
+		personne = gestionUsers.authentifier(login, password);
 		if (personne != null) {
 			if (personne instanceof Client) {
 				return "client/home?faces-redirect=true";
 			} else if (personne instanceof Manager) {
+				if(gestionUsers.managerHasAgency(personne.getCin())==true){
+					return "manager/affecterHotels?faces-redirect=true";
+				}
+				else
 				return "manager/createAgency?faces-redirect=true";
 			} else
 				return "login";
@@ -53,6 +58,14 @@ public class AuthenticiationBean {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Personne getPersonne() {
+		return personne;
+	}
+
+	public void setPersonne(Personne personne) {
+		this.personne = personne;
 	}
 
 }

@@ -8,7 +8,7 @@ import persistance.Manager;
 @Local
 public interface IGestionAgenceLocal {
 
-	void ajouterAgence(Agence agence);
+	Agence ajouterAgence(Agence agence);
 
 	void affecterAgenceManager(Agence agence, Manager manager);
 

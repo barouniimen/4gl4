@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import persistance.Agence;
 import persistance.Personne;
 
 @Stateless
@@ -20,6 +21,16 @@ public class GestionUsers implements IGestionUsers {
 		query.setParameter("login", login);
 		query.setParameter("pwd", pwd);
 		return query.getSingleResult();
+	}
+
+	@Override
+	public boolean managerHasAgency(String cinManager) {
+		TypedQuery<Agence> query = em.createQuery("select a from Agence a where a.manager.cin=:cin", Agence.class);
+		query.setParameter("cin", cinManager);
+		if(query.getSingleResult()!=null){
+			return true;
+		}
+		return false;
 	}
 
 }
